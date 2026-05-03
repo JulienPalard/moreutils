@@ -1,9 +1,11 @@
 isutf8 is a program and a c library to check if a given file (or stdin) contains only
 valid utf-8 sequences.
 
+
 # Compiling
 
     $ make
+
 
 # Demo
 
@@ -60,6 +62,7 @@ helps a lot with the `$''` syntax allowing you to write and test hexadecimal:
     $ echo "Hellö world" | iconv -f utf8 -t latin1 | isutf8
     (standard input): line 1, char 4, byte 4: Expecting bytes in the following ranges: 00..7F C2..F4.
 
+
 # Find UTF8 or non-UTF8 files
 
 As `isutf8` can take multiple arguments it's easy classify
@@ -83,3 +86,17 @@ List UTF8-compatible files:
     Makefile
     README.md
     test.sh
+
+
+# Contributing
+
+There's two test sets that you can run:
+
+    $ bash test.sh
+    $ pytest test.py
+
+The `bash` one has no dependencies, just run it, it is more complete,
+it tests handwritten, well choosen cases.
+
+The `pytest` one needs Python, `pytest`, and `hypothesis` installed,
+this one is brutal: it tests random byte sequences.
